@@ -11,7 +11,7 @@ var uuids = [ "0100000001", "0100000002" ];
 var uuidindex = 0;
 
 //var apiurl = "INSERT_API_URL";
-var apiurl = "https://3bw4a34hah.execute-api.us-east-2.amazonaws.com/default/iotIngest";
+var apiurl = "https://c46tk3knje.execute-api.us-east-2.amazonaws.com/default/iotIngest";
 
 /*
  * This app sends temperature data to an API gateway endpoint
