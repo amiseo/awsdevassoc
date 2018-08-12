@@ -1,0 +1,6 @@
+{
+  "queueName": "awsdevqueue",
+  "messageTotal": 10,
+  "contestants": [ "John", "Sally", "Jim", "Alice" ],
+  "consumerPollFreq": 1000
+}

@@ -1,0 +1,18 @@
+{
+  "Comment": "Deleting A Record - NWG20180723",
+  "Changes": [
+    {
+      "Action": "DELETE",
+      "ResourceRecordSet": {
+        "Name": "db.asdf.com.",
+        "Type": "A",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "4.3.2.1"
+          }
+        ]
+      }
+    }
+  ]
+}

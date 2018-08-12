@@ -1,0 +1,14 @@
+{
+  "name": "nodeinsert",
+  "version": "1.0.0",
+  "description": "Connects to MySQL, create a database and table, inserts data",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nick Garner",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.16.0"
+  }
+}

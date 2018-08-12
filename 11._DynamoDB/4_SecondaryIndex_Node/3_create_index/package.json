@@ -1,0 +1,14 @@
+{
+  "name": "2_sec_index_on_year",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nick Garner",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.289.0"
+  }
+}
