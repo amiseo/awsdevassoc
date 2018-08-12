@@ -1,5 +1,5 @@
 {
   "deviceSettingsTable": "IoTDeviceSettings",
   "deviceDataTable": "IoTDeviceData",
-  "producerFreq": 30000
+  "producerFreq": 5000
 }
