@@ -7,6 +7,9 @@ AWS Elastic Beanstalk is an easy-to-use service for deploying and scaling web ap
 ```
 pip install awsebcli --upgrade --user
 ```
+
+**eb help**
+```
 ubuntu@adgu:~$ eb
 usage: eb (sub-commands ...) [options ...] {arguments ...}
 
