@@ -87,6 +87,8 @@ ubuntu@adgu:~$ aws kinesis get-records --shard-iterator AAAAAAAAAAH6xc0dGZmbU7wN
 }
 ubuntu@adgu:~$ 
 
+ubuntu@adgu:~$ echo "SGVsbG8sIGhvdyBhcmUgeW91Pw==" | base64 --decode
+Hello, how are you?
 ```
 
 ### Delete Stream
