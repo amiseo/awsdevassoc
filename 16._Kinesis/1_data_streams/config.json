@@ -1,0 +1,6 @@
+{
+  "stream_name": "TestStream",
+  "aws_access_key_id": "INSERT_KEY_ID",
+  "aws_secret_access_key": "INSERT_SECRET",
+  "region_name": "us-east-2"
+}
