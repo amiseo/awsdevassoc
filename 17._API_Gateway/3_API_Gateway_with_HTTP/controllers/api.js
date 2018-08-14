@@ -7,23 +7,10 @@ const tumblr = require('tumblr.js');
 const GitHub = require('@octokit/rest');
 const Twit = require('twit');
 const stripe = require('stripe')(process.env.STRIPE_SKEY);
-const twilio = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 const Linkedin = require('node-linkedin')(process.env.LINKEDIN_ID, process.env.LINKEDIN_SECRET, process.env.LINKEDIN_CALLBACK_URL);
-const clockwork = require('clockwork')({ key: process.env.CLOCKWORK_KEY });
 const paypal = require('paypal-rest-sdk');
 const lob = require('lob')(process.env.LOB_KEY);
 const ig = require('instagram-node').instagram();
-const { Venues, Users } = require('node-foursquare')({
-  secrets: {
-    clientId: process.env.FOURSQUARE_ID,
-    clientSecret: process.env.FOURSQUARE_SECRET,
-    redirectUrl: process.env.FOURSQUARE_REDIRECT_URL
-  },
-  foursquare: {
-    mode: 'foursquare',
-    version: 20140806,
-  }
-});
 
 /**
  * GET /api
@@ -33,30 +20,6 @@ exports.getApi = (req, res) => {
   res.render('api/index', {
     title: 'API Examples'
   });
-};
-
-/**
- * GET /api/foursquare
- * Foursquare API example.
- */
-exports.getFoursquare = async (req, res, next) => {
-  const token = req.user.tokens.find(token => token.kind === 'foursquare');
-  try {
-    const getTrendingAsync = promisify(Venues.getTrending);
-    const getVenueAsync = promisify(Venues.getVenue);
-    const getCheckinsAsync = promisify(Users.getCheckins);
-    const trendingVenues = await getTrendingAsync('40.7222756', '-74.0022724', { limit: 50 }, token.accessToken);
-    const venueDetail = await getVenueAsync('49da74aef964a5208b5e1fe3', token.accessToken);
-    const userCheckins = await getCheckinsAsync('self', null, token.accessToken);
-    return res.render('api/foursquare', {
-      title: 'Foursquare API',
-      trendingVenues,
-      venueDetail,
-      userCheckins
-    });
-  } catch (err) {
-    return next(err);
-  }
 };
 
 /**
@@ -378,69 +341,6 @@ exports.postStripe = (req, res) => {
     }
     req.flash('success', { msg: 'Your card has been successfully charged.' });
     res.redirect('/api/stripe');
-  });
-};
-
-/**
- * GET /api/twilio
- * Twilio API example.
- */
-exports.getTwilio = (req, res) => {
-  res.render('api/twilio', {
-    title: 'Twilio API'
-  });
-};
-
-/**
- * POST /api/twilio
- * Send a text message using Twilio.
- */
-exports.postTwilio = (req, res, next) => {
-  req.assert('number', 'Phone number is required.').notEmpty();
-  req.assert('message', 'Message cannot be blank.').notEmpty();
-
-  const errors = req.validationErrors();
-
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/api/twilio');
-  }
-
-  const message = {
-    to: req.body.number,
-    from: '+13472235148',
-    body: req.body.message
-  };
-  twilio.messages.create(message).then((sentMessage) => {
-    req.flash('success', { msg: `Text send to ${sentMessage.to}` });
-    res.redirect('/api/twilio');
-  }).catch(next);
-};
-
-/**
- * GET /api/clockwork
- * Clockwork SMS API example.
- */
-exports.getClockwork = (req, res) => {
-  res.render('api/clockwork', {
-    title: 'Clockwork SMS API'
-  });
-};
-
-/**
- * POST /api/clockwork
- * Send a text message using Clockwork SMS
- */
-exports.postClockwork = (req, res, next) => {
-  const message = {
-    To: req.body.telephone,
-    From: 'Hackathon',
-    Content: 'Hello from the Hackathon Starter'
-  };
-  clockwork.sendSms(message, (err, responseData) => {
-    if (err) { return next(err.errDesc); }
-    req.flash('success', { msg: `Text sent to ${responseData.responses[0].to}` });
-    res.redirect('/api/clockwork');
   });
 };
 
