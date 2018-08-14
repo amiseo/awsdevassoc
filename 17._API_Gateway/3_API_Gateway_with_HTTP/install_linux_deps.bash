@@ -4,6 +4,9 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
+echo This script is no longer used in the course.
+exit 1
+
 echo Installing Node
 cd /tmp
 wget https://nodejs.org/dist/v8.11.3/node-v8.11.3-linux-x64.tar.xz
