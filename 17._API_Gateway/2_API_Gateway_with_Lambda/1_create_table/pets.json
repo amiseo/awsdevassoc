@@ -1,0 +1,22 @@
+[
+  { "id": 1, "type": "dog", "breed": "Labrador", "price": 25 },
+  { "id": 2, "type": "cat", "breed": "Siamese", "price": 88 },
+  { "id": 3, "type": "fish", "breed": "Betta", "price": 32 },
+  { "id": 4, "type": "bird", "breed": "Parrot", "price": 732 },
+  { "id": 5, "type": "reptile", "breed": "Gecko", "price": 37 },
+  { "id": 6, "type": "dog", "breed": "Bulldog", "price": 16 },
+  { "id": 7, "type": "cat", "breed": "Persian", "price": 44 },
+  { "id": 8, "type": "fish", "breed": "Goldfish", "price": 72 },
+  { "id": 9, "type": "bird", "breed": "Parakeet", "price": 39 },
+  { "id": 10, "type": "cat", "breed": "Bengal", "price": 83 },
+  { "id": 11, "type": "dog", "breed": "Pug", "price": 61 },
+  { "id": 12, "type": "dog", "breed": "Boxer", "price": 31 },
+  { "id": 13, "type": "fish", "breed": "Koi", "price": 33 },
+  { "id": 14, "type": "bird", "breed": "Lovebird", "price": 88 },
+  { "id": 15, "type": "reptile", "breed": "Python", "price": 987 },
+  { "id": 16, "type": "fish", "breed": "Shark", "price": 371 },
+  { "id": 17, "type": "cat", "breed": "Ragdoll", "price": 3 },
+  { "id": 18, "type": "dog", "breed": "Husky", "price": 79 },
+  { "id": 19, "type": "dog", "breed": "Dobermann", "price": 14 },
+  { "id": 20, "type": "dog", "breed": "Poodle", "price": 37 }
+]
