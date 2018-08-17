@@ -1,2 +1,0 @@
-# AWS Developer Associate - CodeDeploy
-
