@@ -13,7 +13,7 @@ Global settings for all apps are in settings.json.
 
 ## Run
 ```
-node createtable.js
+node createqueue.js
 node producer.js
 node consumer.js
 ```
