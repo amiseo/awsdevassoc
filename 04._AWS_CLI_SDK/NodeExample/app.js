@@ -8,7 +8,7 @@ ec2.describeInstances(null, function(err, data) {
     console.log(err, err.stack); 
   } else {
     console.log("Total Reservations: " + data.Reservations.length);
-    if (totRes > 0) {
+    if (data.Reservations.length > 0) {
       data.Reservations.forEach(function (item) {
         item.Instances.forEach(function (instance) {
           var name;
