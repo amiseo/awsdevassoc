@@ -47,7 +47,7 @@ function sendResponse(j, callback) {
     var response = {
         "isBase64Encoded": false,
         "statusCode": 200,
-        "headers": {"Content-Type":"application/json" },
+        "headers": {"Content-Type":"application/json", "Access-Control-Allow-Origin":"*" },
         "body": JSON.stringify(j)
     }
     callback(null, response);
