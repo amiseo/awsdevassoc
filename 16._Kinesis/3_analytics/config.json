@@ -1,0 +1,6 @@
+{
+  "stream_name": "sensordata",
+  "aws_access_key_id": "INSERT_KEY_ID",
+  "aws_secret_access_key": "INSERT_SECRET",
+  "aws_region": "us-east-1"
+}
