@@ -1,6 +1,10 @@
 var request = require('request');
 
-var host = "18.222.229.190";
+var host = "127.0.0.1";
+if (host.length == 0) {
+  console.log("Please specify the server IP address.");
+  process.exit(1);
+}
 
 var url = "http://" + host + ":8080";
 
