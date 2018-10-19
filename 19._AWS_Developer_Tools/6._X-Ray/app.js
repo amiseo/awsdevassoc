@@ -1,33 +1,30 @@
-var AWS = require("aws-sdk")
 var express = require('express')
 var bodyParser = require('body-parser')
+
 var AWSXRay = require('aws-xray-sdk');
-var xrayExpress = require('aws-xray-sdk-express');
-var morgan = require('morgan');
+var logger = require('winston');
+AWSXRay.setLogger(logger);
+var AWS = AWSXRay.captureAWS(require('aws-sdk'))
+
+var sqs = AWSXRay.captureAWSClient(new AWS.SQS({region: 'us-east-2'}));
+var sqsQueueURL = "https://us-east-2.queue.amazonaws.com/146868985163/xrayQueue";
 
 var app = express();
 var port = 8080
 
-var sqs = new AWS.SQS({region: 'us-east-2'});
-var sqsQueueName = "xrayQueue";
-var sqsQueueURL = "";
-createSQSQueue();
 
-
-app.use(xrayExpress.openSegment('ADGUApp'));
-app.use(morgan('short'))
+//app.use(xrayExpress.openSegment('ADGUApp'));
+app.use(AWSXRay.express.openSegment('ADGUApp'));
 app.use(bodyParser.json())
 
 
 console.log("> NOTE: this application requires an EC2 role that permits X-Ray, SNS and SQS");
-
 
 /* 
  * Routes
  */
 app.get('/', function (req, res) {
   var ret = {'error':'', 'result':''};
-  var segment = AWSXRay.getSegment();
   res.send(ret);
 });
 
@@ -44,28 +41,16 @@ app.post('/', function (req, res) {
   } else {
     ret.error = "Missing count";
   }
-  var segment = AWSXRay.getSegment();
+
   res.send(ret);
 });
 
 /*
  * SQS
  */
-function createSQSQueue() {
-  console.log("> Creating SQS queue");
-  var params = {
-    QueueName: sqsQueueName,
-    Attributes:{ MessageRetentionPeriod: "120" } // delete messages after 2 minutes
-  }
-
-  sqs.createQueue(params, function(err, data) {
-    if (err) {
-      console.log("Error creating SQS Queue: " + JSON.stringify(err));
-    } else {
-      console.log("Create SQS Queue resonse: " + JSON.stringify(data));
-      sqsQueueURL = data.QueueUrl;
-    }
-  });
+if (sqsQueueURL.length == 0) {
+  console.log("Please specify the sqsQueueURL. Exiting.");
+  process.exit(1);
 }
 
 function pushToSQS(data) {
@@ -90,7 +75,5 @@ function pushToSQS(data) {
   });
 }
 
-app.use(xrayExpress.closeSegment());
-
-
+app.use(AWSXRay.express.closeSegment());
 app.listen(port, () => console.log(`App listening on port ${port}`))
