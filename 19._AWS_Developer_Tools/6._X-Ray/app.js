@@ -7,7 +7,7 @@ AWSXRay.setLogger(logger);
 var AWS = AWSXRay.captureAWS(require('aws-sdk'))
 
 var sqs = AWSXRay.captureAWSClient(new AWS.SQS({region: 'us-east-2'}));
-var sqsQueueURL = "https://us-east-2.queue.amazonaws.com/146868985163/xrayQueue";
+var sqsQueueURL = "";
 
 var app = express();
 var port = 8080
