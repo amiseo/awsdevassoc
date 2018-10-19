@@ -5,7 +5,7 @@ var host = "18.222.229.190";
 var url = "http://" + host + ":8080";
 
 sendGet();
-setInterval(sendGet, 9000);
+setInterval(sendGet, 3000);
 
 var loopCount = 0;
 
