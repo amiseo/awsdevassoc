@@ -1,5 +1,5 @@
 # NodeExample1
-This example creates a basic DynamoDB table and loads 10 items into the table.  The table created in this example uses only a primary key "id", no sort key.  Primary key values must be unique.  
+This example creates a an SQS queue and produces/consumes votes.  Data is logged to an Sqlite database.
 
 ## Install Deps
 ```
