@@ -9,7 +9,7 @@
   "author": "Nick Garner",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.291.0",
+    "aws-sdk": "^2.814.0",
     "sqlite3": "^4.0.2"
   }
 }
