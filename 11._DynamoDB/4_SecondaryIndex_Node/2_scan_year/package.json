@@ -9,6 +9,6 @@
   "author": "Nick Garner",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.289.0"
+    "aws-sdk": "^2.814.0"
   }
 }
